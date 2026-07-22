@@ -39,7 +39,8 @@
 - [ ] 各仓 `CHANGELOG` 有 `1.0.0` 节
 - [ ] npm：`@f2b/spec`、`@f2b/sdk`（及确需公开的包）发布策略、scope 2FA、provenance（按 org 能力）
 - [ ] PyPI：`f2b` 包名占用与可信发布
-- [ ] 镜像：`ghcr.io/f2b-dev/sandbox` 的 `:<sha>` / 稳定 tag；按需 SBOM
+- [x] 镜像策略文档：`ghcr.io/f2b-dev/sandbox` 的 `latest`+`:<sha>`、main 推送、SBOM/签名后置（见 f2b-docs `architecture/versioning`）
+- [ ] 镜像：1.0 时打 semver tag +（按需）SBOM/cosign 实装
 - [ ] 依赖审计：无已知 Critical 未处理（`pnpm audit` / 等价）
 
 ### 安全与品牌
