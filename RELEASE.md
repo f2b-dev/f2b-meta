@@ -113,7 +113,7 @@
 | 包 | 先 `@f2b/spec`，消费方解析后再 `@f2b/sdk` |
 | 权限 | org `f2b-dev` scope；发布账号开 2FA；优先 Trusted Publishing / provenance（按 npm org 能力） |
 | 版本 | 与各仓 `package.json` + `CHANGELOG` `1.0.0` 节一致 |
-| 校验 | `npm pack` 本地审 `files`；无密钥、无 `data/` |
+| 校验 | 各仓 `pnpm pack:check` / `scripts/pack-check.sh`（**禁止** publish）；审 `files`、无密钥、无 `data/` |
 | 1.0 前 | 仅 `file:../f2b-spec` / `file:../f2b-sdk-js` 或 git 依赖 |
 
 ### PyPI（`f2b`）
@@ -121,7 +121,7 @@
 | 项 | 约定 |
 |----|------|
 | 项目名 | 预留 **`f2b`**（与 SDK 目录 `f2b-sdk-python` 对应） |
-| 构建 | `python -m build`；`pyproject.toml` 元数据与 README 品牌「灵境云」 |
+| 构建 | `python -m build`；`scripts/pack-check.sh` 审 sdist；元数据与 README 品牌「灵境云」 |
 | 上传 | 1.0 后 Trusted Publisher（GitHub → PyPI）或 API token；禁止把 token 写入仓 |
 | 1.0 前 | `pip install -e ../f2b-sdk-python` |
 
