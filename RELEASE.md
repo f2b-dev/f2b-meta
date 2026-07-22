@@ -44,7 +44,7 @@
 - [x] npm：`@f2b/spec`、`@f2b/sdk` 发布策略文档（见 §7；**正式 publish 仍 1.0 后**；scope 2FA/provenance 按 org 能力启用）
 - [x] PyPI：`f2b` 发布策略与包名预留说明（见 §7；**正式 upload 仍 1.0 后**）
 - [x] 镜像策略文档：`ghcr.io/f2b-dev/sandbox` 的 `latest`+`:<sha>`、main 推送、SBOM/签名后置（见 f2b-docs `architecture/versioning`）
-- [ ] 镜像：1.0 时打 semver tag +（按需）SBOM/cosign 实装
+- [ ] 镜像：1.0 时打 semver tag + cosign（按需）；**SBOM**：main 已挂 Syft 工件（非 semver tag）
 - [x] 依赖审计：无已知 Critical 未处理（2026-07-22 `pnpm audit --prod --registry https://registry.npmjs.org`；web/mcp 用 overrides 清 high/moderate；镜像源 npmmirror 无 audit 端点）
 
 ### 安全与品牌
