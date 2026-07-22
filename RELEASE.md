@@ -25,14 +25,18 @@
 
 ## 3. 1.0 门槛（全部勾选后再 registry 发布）
 
+> **预 1.0 Fake 闸门（2026-07-22）**：上表中 Fake 产品路径、契约 CI、文档端口、控制台诚实、安全演练、镜像**策略文档**已勾选。  
+> **仍阻塞 1.0 registry**：真 microVM 单节点验收、各仓 `CHANGELOG` 的 `1.0.0` 节、npm/PyPI 实装、镜像 semver/SBOM 实装、依赖审计、安全邮箱/Private reporting 生产可达性确认。
+
+
 ### 产品与契约
 
-- [ ] Fake 路径：create → 命令/SSE → 文件 → 模板 → 用量 → 密钥 → 隧道 可验收
+- [x] Fake 路径：create → 命令/SSE → 文件 → 模板 → 用量 → 密钥 → 隧道 可验收（`f2b-web` `e2e:bff`；香港 2026-07-22 `E2E_BFF_OK`）
 - [ ] 真 microVM 单节点至少一台验收通过（healthz `backend` ≠ 未配置时的误报；见 f2b-infra `cube-single-node`）
-- [ ] 能力矩阵与 quickstart / cookbook 与行为一致
-- [ ] OpenAPI Spectral + `check:errors` + sandbox `ci:contract` 绿
-- [ ] SDK JS / Python smoke 绿；MCP smoke 绿
-- [ ] 控制台 backend 徽章诚实（不得宣称未接入的真集群）
+- [x] 能力矩阵与 quickstart / cookbook 与端口/行为对齐（文档站；真 Cube 行待装栈后刷新）
+- [x] OpenAPI Spectral + `check:errors` + sandbox `ci:contract`（含 mock `smoke:cube` / `smoke:cube-http`）
+- [x] SDK JS / Python smoke 绿；MCP smoke 绿（各仓 GHA）
+- [x] 控制台 backend 徽章诚实（healthz → badge）
 
 ### 发布与供应链
 
@@ -46,15 +50,15 @@
 ### 安全与品牌
 
 - [ ] [SECURITY.md](./SECURITY.md) 渠道可达（Private reporting 或 `security@f2b.dev`）
-- [ ] 完成一次 **安全披露桌面演练**（见 §5）
-- [ ] 用户可见文案终检：无「腾讯 / CubeSandbox / 基于腾讯」；`f2b-web` `ci-guards` 绿
-- [ ] 浏览器路径无管理密钥 / `CUBE_API_TOKEN`
+- [x] 完成一次 **安全披露桌面演练**（`docs/security-drill-2026-07-22.md`）
+- [x] 用户可见文案终检：无「腾讯 / CubeSandbox / 基于腾讯」；`f2b-web` `ci-guards` 绿
+- [x] 浏览器路径无管理密钥 / `CUBE_API_TOKEN`（`ci-guards`）
 
 ### 文档与运维
 
-- [ ] f2b-docs 1.0 导航与端口（13200 / 13287 / 8790）正确
-- [ ] all-in-one + 香港/试验床 runbook 可复现 `INSTALL_OK`
-- [ ] 贡献指南指向本文件与 versioning
+- [x] f2b-docs 导航与端口（13200 / 13287 / 8790）正确（预 1.0）
+- [x] all-in-one + 香港/试验床 runbook 可复现 `INSTALL_OK`（2026-07-22）
+- [x] 贡献指南指向本文件与 versioning
 
 ## 4. 1.0 当日顺序（建议）
 
