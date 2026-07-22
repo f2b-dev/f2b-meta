@@ -26,7 +26,7 @@
 ## 3. 1.0 门槛（全部勾选后再 registry 发布）
 
 > **预 1.0 Fake 闸门（2026-07-22）**：上表中 Fake 产品路径、契约 CI、文档端口、控制台诚实、安全演练、镜像**策略文档**已勾选。  
-> **仍阻塞 1.0 registry**：真 microVM 单节点验收、各仓 `CHANGELOG` 的 `1.0.0` 节、npm/PyPI 实装、镜像 semver/SBOM 实装、安全邮箱/Private reporting 生产可达性确认。
+> **仍阻塞 1.0 registry**：真 microVM 单节点验收、各仓 `CHANGELOG` 的 `1.0.0` 节、npm/PyPI **实装 publish**、镜像 semver tag +（按需）SBOM/cosign 实装。
 
 
 ### 产品与契约
@@ -41,15 +41,15 @@
 ### 发布与供应链
 
 - [ ] 各仓 `CHANGELOG` 有 `1.0.0` 节
-- [ ] npm：`@f2b/spec`、`@f2b/sdk`（及确需公开的包）发布策略、scope 2FA、provenance（按 org 能力）
-- [ ] PyPI：`f2b` 包名占用与可信发布
+- [x] npm：`@f2b/spec`、`@f2b/sdk` 发布策略文档（见 §7；**正式 publish 仍 1.0 后**；scope 2FA/provenance 按 org 能力启用）
+- [x] PyPI：`f2b` 发布策略与包名预留说明（见 §7；**正式 upload 仍 1.0 后**）
 - [x] 镜像策略文档：`ghcr.io/f2b-dev/sandbox` 的 `latest`+`:<sha>`、main 推送、SBOM/签名后置（见 f2b-docs `architecture/versioning`）
 - [ ] 镜像：1.0 时打 semver tag +（按需）SBOM/cosign 实装
 - [x] 依赖审计：无已知 Critical 未处理（2026-07-22 `pnpm audit --prod --registry https://registry.npmjs.org`；web/mcp 用 overrides 清 high/moderate；镜像源 npmmirror 无 audit 端点）
 
 ### 安全与品牌
 
-- [ ] [SECURITY.md](./SECURITY.md) 渠道可达（Private reporting 或 `security@f2b.dev`）
+- [x] [SECURITY.md](./SECURITY.md) 渠道可达（2026-07-22 产品仓 Private vulnerability reporting `enabled`；邮件 `security@f2b.dev` 为备选）
 - [x] 完成一次 **安全披露桌面演练**（`docs/security-drill-2026-07-22.md`）
 - [x] 用户可见文案终检：无「腾讯 / CubeSandbox / 基于腾讯」；`f2b-web` `ci-guards` 绿
 - [x] 浏览器路径无管理密钥 / `CUBE_API_TOKEN`（`ci-guards`）
@@ -101,3 +101,35 @@
 - [SECURITY.md](./SECURITY.md)
 - [REPOS.md](./REPOS.md)
 - [BRAND.md](./BRAND.md)
+
+## 7. Registry 发布策略（预写，1.0 后执行）
+
+> **硬闸门**：未勾完 §3 且未开 1.0 发版日序前，**禁止** `npm publish` / `twine upload` 到正式 registry。
+
+### npm（`@f2b/*`）
+
+| 项 | 约定 |
+|----|------|
+| 包 | 先 `@f2b/spec`，消费方解析后再 `@f2b/sdk` |
+| 权限 | org `f2b-dev` scope；发布账号开 2FA；优先 Trusted Publishing / provenance（按 npm org 能力） |
+| 版本 | 与各仓 `package.json` + `CHANGELOG` `1.0.0` 节一致 |
+| 校验 | `npm pack` 本地审 `files`；无密钥、无 `data/` |
+| 1.0 前 | 仅 `file:../f2b-spec` / `file:../f2b-sdk-js` 或 git 依赖 |
+
+### PyPI（`f2b`）
+
+| 项 | 约定 |
+|----|------|
+| 项目名 | 预留 **`f2b`**（与 SDK 目录 `f2b-sdk-python` 对应） |
+| 构建 | `python -m build`；`pyproject.toml` 元数据与 README 品牌「灵境云」 |
+| 上传 | 1.0 后 Trusted Publisher（GitHub → PyPI）或 API token；禁止把 token 写入仓 |
+| 1.0 前 | `pip install -e ../f2b-sdk-python` |
+
+### 镜像 semver（与策略文档对齐）
+
+| 项 | 约定 |
+|----|------|
+| 现网 | `ghcr.io/f2b-dev/sandbox:latest` + `:<sha>`（`main` 推送；GHA `image` job） |
+| 1.0 日 | 追加 tag `1.0.0` / `1`；可选 SBOM attestation、cosign keyless |
+| 禁止 | 在未装真 Cube 时用镜像文案暗示「已含 microVM 内核」 |
+

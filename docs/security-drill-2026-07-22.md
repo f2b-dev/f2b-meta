@@ -25,7 +25,8 @@
 
 ## 结论
 
-- 文档与渠道说明**可走通**；`security@f2b.dev` 若未开通，1.0 前须启用 GitHub Private vulnerability reporting 或更新联系方式。
+- 文档与渠道说明**可走通**。
+- **后续（同日）**：组织 `f2b-dev` 产品仓已启用 GitHub Private vulnerability reporting（API `enabled: true`）；邮件 `security@f2b.dev` 仍可作为备选，生产 MX 可达性可后置确认。
 - **无代码缺陷在本演练中确认**；不据此宣称完成漏洞修复。
 
 归档位置：本文件（可提交公开仓，因无真实漏洞细节）。

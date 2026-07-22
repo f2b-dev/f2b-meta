@@ -27,8 +27,8 @@
 
 请**不要**开公开 GitHub Issue 张贴可利用细节。
 
-1. 使用 GitHub **Private vulnerability reporting**（若该仓已启用）：仓库 Security → Report a vulnerability。  
-2. 或发送邮件至：**security@f2b.dev**（若尚未开通，可临时使用组织 Owner 在 org 资料中的联系邮箱，并在标题标明 `[SECURITY]`）。  
+1. **首选**：GitHub **Private vulnerability reporting**（组织产品仓已于 2026-07-22 批量启用）：仓库 → Security → Report a vulnerability。  
+2. 备选：邮件 **security@f2b.dev**（域名邮箱若尚未解析，可临时使用组织 Owner 联系邮箱，标题标明 `[SECURITY]`）。  
 
 报告请尽量包含：
 
