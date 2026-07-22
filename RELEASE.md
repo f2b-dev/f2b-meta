@@ -31,7 +31,7 @@
 
 ### 产品与契约
 
-- [x] Fake 路径：create → 命令/SSE → 文件 → 模板 → 用量 → 密钥 → 隧道 可验收（`f2b-web` `e2e:bff`；香港 2026-07-22 `E2E_BFF_OK`）
+- [x] Fake 路径：create → 命令/SSE → 文件 → 模板 → 用量 → 密钥 → 隧道 可验收（`f2b-web` `e2e:bff` + GHA job `e2e-bff` 绿；香港 2026-07-22 `E2E_BFF_OK`）
 - [ ] 真 microVM 单节点至少一台验收通过（healthz `backend` ≠ 未配置时的误报；见 f2b-infra `cube-single-node`）
 - [x] 能力矩阵与 quickstart / cookbook 与端口/行为对齐（文档站；真 Cube 行待装栈后刷新）
 - [x] OpenAPI Spectral + `check:errors` + sandbox `ci:contract`（含 mock `smoke:cube` / `smoke:cube-http`）
