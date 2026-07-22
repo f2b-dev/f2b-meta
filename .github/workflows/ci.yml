@@ -29,9 +29,9 @@ jobs:
             echo "发现过时服务端口 3000/8787" >&2
             exit 1
           fi
-          # 对外组织文案禁止写腾讯 / CubeSandbox
+          # 对外组织文案禁止写腾讯 / CubeSandbox（BRAND.md 可列「禁止项」）
           bad=$(grep -nE 'CubeSandbox|腾讯 Cube|腾讯云' \
-            README.md BRAND.md SECURITY.md REPOS.md CONTRIBUTING.md CODE_OF_CONDUCT.md 2>/dev/null || true)
+            README.md SECURITY.md REPOS.md CONTRIBUTING.md CODE_OF_CONDUCT.md 2>/dev/null || true)
           if [[ -n "$bad" ]]; then
             echo "$bad"
             echo "组织对外文案含 CubeSandbox/腾讯" >&2
