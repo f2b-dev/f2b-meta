@@ -26,7 +26,7 @@
 ## 3. 1.0 门槛（全部勾选后再 registry 发布）
 
 > **预 1.0 Fake 闸门（2026-07-22）**：上表中 Fake 产品路径、契约 CI、文档端口、控制台诚实、安全演练、镜像**策略文档**已勾选。  
-> **仍阻塞 1.0 registry**：真 microVM 单节点验收、各仓 `CHANGELOG` 的 `1.0.0` 节、npm/PyPI 实装、镜像 semver/SBOM 实装、依赖审计、安全邮箱/Private reporting 生产可达性确认。
+> **仍阻塞 1.0 registry**：真 microVM 单节点验收、各仓 `CHANGELOG` 的 `1.0.0` 节、npm/PyPI 实装、镜像 semver/SBOM 实装、安全邮箱/Private reporting 生产可达性确认。
 
 
 ### 产品与契约
@@ -45,7 +45,7 @@
 - [ ] PyPI：`f2b` 包名占用与可信发布
 - [x] 镜像策略文档：`ghcr.io/f2b-dev/sandbox` 的 `latest`+`:<sha>`、main 推送、SBOM/签名后置（见 f2b-docs `architecture/versioning`）
 - [ ] 镜像：1.0 时打 semver tag +（按需）SBOM/cosign 实装
-- [ ] 依赖审计：无已知 Critical 未处理（`pnpm audit` / 等价）
+- [x] 依赖审计：无已知 Critical 未处理（2026-07-22 `pnpm audit --prod --registry https://registry.npmjs.org`；web/mcp 用 overrides 清 high/moderate；镜像源 npmmirror 无 audit 端点）
 
 ### 安全与品牌
 
