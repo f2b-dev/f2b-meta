@@ -15,7 +15,7 @@
 | [f2b-tunnel](https://github.com/f2b-dev/f2b-tunnel) | 隧道 / 预览 URL 反代 |
 | [f2b-infra](https://github.com/f2b-dev/f2b-infra) | 本地 compose / 部署编排（无业务逻辑） |
 | [f2b-docs](https://github.com/f2b-dev/f2b-docs) | 开发者文档站（VitePress） |
-| **f2b-meta**（本仓） | 贡献、安全、品牌、地图 |
+| **f2b-meta**（本仓） | 贡献、安全、品牌、地图、[1.0 发版清单](./RELEASE.md) |
 
 ## 运行时关系
 

@@ -41,6 +41,12 @@ workspace/
 
 见 [f2b-spec README](https://github.com/f2b-dev/f2b-spec#版本约定semver)：先加后删、发布列车 `spec → 服务 → SDK → web → docs`。
 
+### 版本与 1.0
+
+- 组织级清单与 CHANGELOG 约定：[RELEASE.md](./RELEASE.md)  
+- 文档站：[版本与发版](https://github.com/f2b-dev/f2b-docs/blob/main/docs/architecture/versioning.md)  
+- **1.0 前禁止** npm / PyPI 正式发布
+
 ## 代码与文案
 
 | 项 | 约定 |
