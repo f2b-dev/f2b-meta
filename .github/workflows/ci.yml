@@ -1,0 +1,45 @@
+# f2b-meta：组织文档守卫（无构建）
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  docs-guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: 必备文件
+        run: |
+          set -euo pipefail
+          for f in README.md SECURITY.md RELEASE.md REPOS.md BRAND.md CONTRIBUTING.md CODE_OF_CONDUCT.md LICENSE; do
+            test -f "$f" || { echo "missing $f" >&2; exit 1; }
+            echo "ok $f"
+          done
+      - name: 端口与宣传文案（组织级）
+        run: |
+          set -euo pipefail
+          # 组织文档不应把 3000/8787 当灵境云默认服务口
+          hits=$(grep -RInE 'localhost:3000|:8787\b|PORT=8787|PORT=3000' \
+            --exclude-dir=.git --exclude-dir=.github --exclude=CHANGELOG.md . || true)
+          if [[ -n "$hits" ]]; then
+            echo "$hits"
+            echo "发现过时服务端口 3000/8787" >&2
+            exit 1
+          fi
+          # 对外组织文案禁止写腾讯 / CubeSandbox
+          bad=$(grep -nE 'CubeSandbox|腾讯 Cube|腾讯云' \
+            README.md BRAND.md SECURITY.md REPOS.md CONTRIBUTING.md CODE_OF_CONDUCT.md 2>/dev/null || true)
+          if [[ -n "$bad" ]]; then
+            echo "$bad"
+            echo "组织对外文案含 CubeSandbox/腾讯" >&2
+            exit 1
+          fi
+          # RELEASE 须保留 1.0 硬闸门句
+          grep -qE '禁止.*(npm publish|registry)' RELEASE.md || {
+            echo "RELEASE.md 缺少 registry 硬闸门" >&2
+            exit 1
+          }
+          echo "guards ok"
