@@ -63,3 +63,7 @@
 ## 致谢
 
 感谢负责任的披露。目前无漏洞赏金计划；重大贡献可在安全通告中公开致谢。
+
+## 依赖告警
+
+产品仓启用 GitHub **Dependabot**（weekly）与 vulnerability alerts；Critical 须在 1.0 前处理（见 RELEASE 依赖审计）。
