@@ -1,0 +1,35 @@
+name: 缺陷报告
+description: 产品行为与预期不符（非安全漏洞）
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        安全漏洞请走 [SECURITY.md](https://github.com/f2b-dev/f2b-meta/blob/main/SECURITY.md)，勿在此贴利用细节。
+  - type: input
+    id: repo
+    attributes:
+      label: 仓库
+      description: 如 f2b-sandbox / f2b-web
+      placeholder: f2b-web
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      description: 环境（Fake / 本机 / 香港测试机）、命令或操作路径
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望 vs 实际
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 版本 / commit
+      placeholder: main @ abc1234

@@ -1,0 +1,29 @@
+name: 功能 / 文档建议
+description: 非紧急产品或文档改进（1.0 前请先看 RELEASE 硬闸门）
+title: "[idea] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        大规模范围（计费扣款、多节点、npm 发布）见 [RELEASE.md](https://github.com/f2b-dev/f2b-meta/blob/main/RELEASE.md) 与路线图；请勿在此要求 1.0 前 registry 发布。
+  - type: dropdown
+    id: area
+    attributes:
+      label: 区域
+      options:
+        - 控制台 / BFF
+        - 沙箱 API / Fake
+        - SDK
+        - MCP / 隧道
+        - 文档 / 运维
+        - 其它
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议内容
+      description: 用户场景、成功标准、是否可 Fake 验收
+    validations:
+      required: true
